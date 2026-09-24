@@ -32,7 +32,7 @@ public class AuthService {
         if (userRepository.existsByUsername(
                 request.getUsername())) {
 
-            throw new RuntimeException(
+            throw new IllegalArgumentException(
                     "Username already exists"
             );
         }
@@ -67,7 +67,7 @@ public class AuthService {
                                 request.getUsername()
                         )
                         .orElseThrow(() ->
-                                new RuntimeException(
+                                new IllegalArgumentException(
                                         "Invalid username or password"
                                 )
                         );
@@ -79,7 +79,7 @@ public class AuthService {
                 );
 
         if (!passwordMatches) {
-            throw new RuntimeException(
+            throw new IllegalArgumentException(
                     "Invalid username or password"
             );
         }
