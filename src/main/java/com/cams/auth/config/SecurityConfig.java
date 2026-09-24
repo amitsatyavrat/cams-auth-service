@@ -64,7 +64,9 @@ public class SecurityConfig {
                         .requestMatchers(
                                 "/auth/register",
                                 "/auth/login",
-                                "/h2-console/**"
+                                "/h2-console/**",
+                                "/actuator/health/**",
+                                "/error"
                         ).permitAll()
 
                         // Everything else requires authentication
