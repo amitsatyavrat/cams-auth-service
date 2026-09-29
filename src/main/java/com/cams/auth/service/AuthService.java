@@ -5,6 +5,7 @@ import com.cams.auth.dto.LoginResponse;
 import com.cams.auth.dto.RegisterRequest;
 import com.cams.auth.dto.RegisterResponse;
 import com.cams.auth.entity.User;
+import com.cams.auth.exception.DuplicateResourceException;
 import com.cams.auth.repository.UserRepository;
 import com.cams.auth.security.JwtService;
 import org.springframework.security.crypto.password.PasswordEncoder;
@@ -32,7 +33,7 @@ public class AuthService {
         if (userRepository.existsByUsername(
                 request.getUsername())) {
 
-            throw new IllegalArgumentException(
+            throw new DuplicateResourceException(
                     "Username already exists"
             );
         }
